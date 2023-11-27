@@ -1,17 +1,24 @@
-const InputField = ({label, className="", type="text", value, ...props }) => {
+const InputField = ({
+  label,
+  className = "",
+  type = "text",
+  value,
+  ...props
+}) => {
   return (
     <div className="inputField">
-        <label htmlFor={label}>{label}</label>
-       <input
-         type={type}
-         id="input"
-         value={value}
-         className={className}
-         {...props}
-         />
-         <span className="val">{value}</span>
-    </div>
-  )
-}
+      {label && <label htmlFor={label}>{label}</label>}
+      <input
+        type={type}
+        id="input"
+        value={value}
+        className={className}
+        {...props}
+      />
 
-export default InputField
+      {value && <span className="val">{value}</span>}
+    </div>
+  );
+};
+
+export default InputField;
