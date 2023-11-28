@@ -45,6 +45,18 @@ function App() {
     img.src = imageSrc;
   }
 
+  const handleResetFilters = () => {
+    setBrightness(1);
+    setContrast(100);
+    setGrayscale(0);
+    setHue(0);
+    setInvert(0);
+    setOpacity(100);
+    setSaturate(100);
+    setSepia(0);
+
+  }
+
   const myStyle = {
     filter: `brightness(${brightness}) contrast(${contrast}%) saturate(${saturate}%) invert(${invert}%) hue-rotate(${hue}deg) grayscale(${grayscale}%) opacity(${opacity}%) sepia(${sepia}%)`,
   };
@@ -59,7 +71,7 @@ function App() {
           onChange={handleImageChange}
         />
 
-        <ImageSection imageSrc={imageSrc} style={myStyle} handleDownload={handleDownload} />
+        <ImageSection imageSrc={imageSrc} style={myStyle} handleDownload={handleDownload} handleResetFilters={handleResetFilters} />
 
         <section className="filterOptions">
           <InputField
@@ -134,6 +146,7 @@ function App() {
             onChange={(e) => setInvert(e.target.value)}
             max={100}
           />
+          
         </section>
       </main>
     </>

@@ -1,5 +1,5 @@
 
-const ImageSection = ({ imageSrc, style, handleDownload }) => {
+const ImageSection = ({ imageSrc, style, handleDownload, handleResetFilters }) => {
   return (
     <>
     <section className="imageArea">
@@ -10,6 +10,8 @@ const ImageSection = ({ imageSrc, style, handleDownload }) => {
     </section>
     <div className="btn">
     <button className="button" onClick={handleDownload}>Download</button>
+         
+    <button className="resetBtn button" id="btn" onClick={handleResetFilters}>Reset</button>
     </div>
     </>
   )
