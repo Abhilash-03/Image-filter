@@ -6,14 +6,12 @@ import ImageSection from "./components/ImageSection";
 function App() {
   
   const [imageSrc, setImageSrc] = useState(null);
-  const [brightness, setBrightness] = useState(1);
-  const [contrast, setContrast] = useState(100);
-  const [saturate, setSaturate] = useState(85);
-  const [invert, setInvert] = useState(0);
-  const [hue, setHue] = useState(20);
-  const [grayscale, setGrayscale] = useState(0);
-  const [opacity, setOpacity] = useState(100);
-  const [sepia, setSepia] = useState(0);
+
+  const intitalValue = {
+    brightness: 1, contrast: 100, saturate: 85, invert: 0, hue: 20, grayscale: 0, opacity: 100, sepia: 0
+  }
+  const [filters, setFilters] = useState(intitalValue);
+  const {brightness, contrast, saturate, invert, hue, grayscale, opacity, sepia} = filters;
  
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -46,20 +44,13 @@ function App() {
   }
 
   const handleResetFilters = () => {
-    setBrightness(1);
-    setContrast(100);
-    setGrayscale(0);
-    setHue(0);
-    setInvert(0);
-    setOpacity(100);
-    setSaturate(100);
-    setSepia(0);
-
+    setFilters(intitalValue);
   }
-
+  
   const myStyle = {
     filter: `brightness(${brightness}) contrast(${contrast}%) saturate(${saturate}%) invert(${invert}%) hue-rotate(${hue}deg) grayscale(${grayscale}%) opacity(${opacity}%) sepia(${sepia}%)`,
   };
+
 
   return (
     <>
@@ -79,7 +70,7 @@ function App() {
             type="range"
             className="rangeInput"
             value={brightness}
-            onChange={(e) => setBrightness(e.target.value)}
+            onChange={(e) => setFilters({...filters, brightness: e.target.value})}
             min={1}
             max={100}
           />
@@ -89,7 +80,7 @@ function App() {
             type="range"
             className="rangeInput"
             value={contrast}
-            onChange={(e) => setContrast(e.target.value)}
+            onChange={(e) => setFilters({...filters, contrast: e.target.value})}
             max={200}
           />
 
@@ -98,7 +89,7 @@ function App() {
             type="range"
             className="rangeInput"
             value={saturate}
-            onChange={(e) => setSaturate(e.target.value)}
+            onChange={(e) => setFilters({...filters, saturate: e.target.value})}
             max={100}
           />
 
@@ -107,7 +98,7 @@ function App() {
             type="range"
             className="rangeInput"
             value={sepia}
-            onChange={(e) => setSepia(e.target.value)}
+            onChange={(e) => setFilters({...filters, sepia: e.target.value})}
             max={100}
           />
 
@@ -116,7 +107,7 @@ function App() {
             type="range"
             className="rangeInput"
             value={grayscale}
-            onChange={(e) => setGrayscale(e.target.value)}
+            onChange={(e) => setFilters({...filters, grayscale: e.target.value})}
             max={100}
           />
 
@@ -125,7 +116,7 @@ function App() {
             type="range"
             className="rangeInput"
             value={hue}
-            onChange={(e) => setHue(e.target.value)}
+            onChange={(e) => setFilters({...filters, hue: e.target.value})}
             max={360}
           />
 
@@ -134,7 +125,7 @@ function App() {
             type="range"
             className="rangeInput"
             value={opacity}
-            onChange={(e) => setOpacity(e.target.value)}
+            onChange={(e) => setFilters({...filters, opacity: e.target.value})}
             max={100}
           />
 
@@ -143,7 +134,7 @@ function App() {
             type="range"
             className="rangeInput"
             value={invert}
-            onChange={(e) => setInvert(e.target.value)}
+            onChange={(e) => setFilters({...filters, invert: e.target.value})}
             max={100}
           />
           
